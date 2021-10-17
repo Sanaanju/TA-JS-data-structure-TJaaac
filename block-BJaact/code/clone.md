@@ -10,12 +10,12 @@ let person2 = person;
 
 person.firstName = 'Arya';
 
-console.log(person2.firstName); // output
-console.log(person.firstName); // output
-console.log(person.lastName); // output
-console.log(person == person2); // output
-console.log(person === person2); // output
-console.log(person.lastName === person2.lastName); // output
+console.log(person2.firstName); // output Arya , person and person2 points to the location of same referece number.
+console.log(person.firstName); // output  Arya, person.firstname is changed to "Arya"
+console.log(person.lastName); // output Doe , person oject is having lastname:Doe <- property.
+console.log(person == person2); // output //true ,Because they both store the same reference number which points the same memory location.
+console.log(person === person2); // output true ,Because they both store the same reference number which points the same memory location, more over both are objects so strict equal is also true.
+console.log(person.lastName === person2.lastName); // output true ,Because they both store the same reference number which points the same memory location, more over both are objects so strict equal is also true.
 ```
 
 2. Write the output with reason:
@@ -37,17 +37,17 @@ let personTwo = { ...person };
 person.firstName = 'Arya';
 person.city = 'Navada';
 
-console.log(personTwo.firstName); // output
-console.log(person.firstName); // output
-console.log(personTwo.lastName); // output
-console.log(person.firstName === personTwo.firstName); // output
-console.log(person == personTwo); // output
-console.log(person === personTwo); // output
-console.log(person.address === personTwo.address); // output
-console.log(person.address == personTwo.address); // output
-console.log(personTwo.address.city); // output
-console.log(person.address.city); // output
-console.log(person.address.city == personTwo.address.city); // output
+console.log(personTwo.firstName); // output John, we cloned the personTwo object from person , then we done this person.firstName to "Arya", so personTwo is pointed to a different refernce number.
+console.log(person.firstName); // output Arya , we changed the firstName.
+console.log(personTwo.lastName); // output  Doe, it points to the different reference  number.
+console.log(person.firstName === personTwo.firstName); // output  false , they are pointed different strings.
+console.log(person == personTwo); // output false, both objects pointed to different reference numbers.
+console.log(person === personTwo); // output false, both objects pointed to different refernce numbers.
+console.log(person.address === personTwo.address); // output  true , both the address objects are pointed to sam refernce number , because the deep cloning is not applied.
+console.log(person.address == personTwo.address); // output true , both the address objects are pointed to sam refernce number , because the deep cloning is not applied.
+console.log(personTwo.address.city); // output  "San Jose"
+console.log(person.address.city); // output  "San Jose"
+console.log(person.address.city == personTwo.address.city); // output true ,both the address objects are pointed to sam refernce number , because the deep cloning is not applied.
 ```
 
 3. Write the output with reason:
@@ -69,17 +69,17 @@ let personTwo = { ...person, address: { ...person.address } };
 person.firstName = 'Arya';
 person.city = 'Navada';
 
-console.log(personTwo.firstName); // output
-console.log(person.firstName); // output
-console.log(personTwo.lastName); // output
-console.log(person.firstName === personTwo.firstName); // output
-console.log(person == personTwo); // output
-console.log(person === personTwo); // output
-console.log(person.address === personTwo.address); // output
-console.log(person.address == personTwo.address); // output
-console.log(personTwo.address.city); // output
-console.log(person.address.city); // output
-console.log(person.address.city == personTwo.address.city); // output
+console.log(personTwo.firstName); // output John, we cloned the personTwo object from person , then we done this person.firstName to "Arya", so personTwo is pointed to a different refernce number.
+console.log(person.firstName); // output Arya , we changed the firstName.
+console.log(personTwo.lastName); // output Doe, it points to the different reference  number.
+console.log(person.firstName === personTwo.firstName); // output false , they are pointed different strings.
+console.log(person == personTwo); // output false, both objects pointed to different reference numbers.
+console.log(person === personTwo); // output false, both objects pointed to different refernce numbers.
+console.log(person.address === personTwo.address); // output false , both the address objects are pointed to different refernce number , because the deep cloning is not applied.
+console.log(person.address == personTwo.address); // output true , both the address objects are pointed todifferent  refernce number , because the deep cloning is not applied.
+console.log(personTwo.address.city); // output "San Jose"
+console.log(person.address.city); // output "San Jose"
+console.log(person.address.city == personTwo.address.city); // output true ,both the address objects are pointed to sam refernce number , because the deep cloning is not applied.
 ```
 
 4. Clone the `blogs` variable into a new variable named `clonedBlogs`
@@ -105,6 +105,7 @@ let blogs = [
 
 // Your code goes here
 ```
+let clonedBlogs = [ {...blogs[0]}, {...blogs[1]}, {...blogs[2]}, ];
 
 5. Clone the `question` variable into a new variable named `questionClone`
 
@@ -130,6 +131,7 @@ var questions = [
 
 // Your code goes here
 ```
+let questionClone = [ {...questions[0],responses:[...questions[0].responses]}, {...questions[1],responses:[...questions[0].responses]} ];
 
 6. Clone the `allBlogs` variable into a new variable named `allBlogsClone`
 
@@ -157,6 +159,7 @@ var allBlogs = {
 
 // Your code goes here
 ```
+var allBlogsClone = { ...allBlogs, author:{ ...allBlogs.author }, comments:[ {...allBlogs.comments[0]}, {...allBlogs.comments[1]} ] };
 
 7. Clone the `person` variable into a new variable named `clonedPerson`
 
@@ -191,11 +194,23 @@ let person = [
 // Your code goes here
 ```
 
+let clonedPerson =  [
+  {...person[0],input:{...person[0].input},output:{...person[0].output}},
+  {...person[1],input:{...person[1].input,name:{...person[1].input.name}},output:{...person[1].output}},
+  {...person[2],input:{...person[2].input},output:{...person[2].output}},
+  {...person[3],
+    input:{...person[3].input,
+      name:{...person[3].input.name},
+      birthday:{...person[3].input.birthday}},
+    output:{...person[3].output}
+  }
+  ];
 8. Write a function named `cloneObject` that accepts an object and returns the clone of the object
 
 ```js
 function cloneObject() {
   // your code
+  return JSON.parse(JSON.stringify(x));
 }
 
 // Run the test below to check your function
