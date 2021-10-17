@@ -3,11 +3,37 @@ let numbers = [6, 8, 10, 12, 43, 56, 98];
 let userIds = [1230, 234, 1278, 984, 763, 900];
 
 // 1. Add all the values of numbers and userIds array into the new newly created array named `collection`
-
+let collections=[];
+for(var i=0;i<numbers.length;i++){
+  collections.push(numbers[i]);
+}
+for(var i=0;i<userIds.length;i++){
+  collections.push(userIds[i]);
+}
 // 2. Add all the even numbers from both arrays numbers and userIds into a newly created array named `evenCollection`
-
+let evenCollection = [];
+for(var i=0;i<numbers.length;i++){
+  if(numbers[i]%2==0){
+    evenCollection.push(numbers[i]);
+  }
+}
+for(var i=0;i<userIds.length;i++){
+  if(numbers[i]%2==0){
+    evenCollection.push(userIds[i]);
+  }
+}
 // 3. Add all the odd numbers from both arrays numbers and userIds into a newly created array named `oddCollection`
-
+let oddCollection = [];
+for(var i=0;i<numbers.length;i++){
+  if(numbers[i]%2!=0){
+    oddCollection.push(numbers[i]);
+  }
+}
+for(var i=0;i<userIds.length;i++){
+  if(numbers[i]%2!=0){
+    oddCollection.push(userIds[i]);
+  }
+}
 /*
   @param means parameter
 
@@ -26,6 +52,16 @@ let userIds = [1230, 234, 1278, 984, 763, 900];
 
 function times() {
   // Your code
+
+function times(number,character="test") {
+  let timesArray=[];
+  for(let i=0;i<number;i++){
+    timesArray.push(character);
+  }
+  if(number==0){
+    return 
+  }
+  return timesArray;
 }
 
 // Uncomment the code below and test the output
@@ -50,6 +86,13 @@ function times() {
 
 function revert() {
   // your code
+  function revert(array) {
+    let newArray=[];
+    for(let i=array.length-1;i>=0;i--){
+      newArray.push(array[i]);
+    }
+    return newArray;
+  }
 }
 
 // Uncomment the code below and test the output
@@ -72,6 +115,16 @@ function revert() {
 
 function clear() {
   // your code
+  function clear(array) {
+    // your code
+      let newArray=[];
+      for(let i=array.length-1;i>=0;i--){
+        if(array[i]!=undefined && array[i]!= 0 && array[i]!=null && array[i]!="" && array[i]!=false){
+          newArray.push(array[i]);
+        }
+      }
+      return newArray; 
+  }
 }
 
 // Uncomment the code below and test the output
@@ -95,6 +148,21 @@ function clear() {
 
 function arrayToObj() {
   // your code
+  
+function arrayToObj(array) {
+  let add=``;
+  for(let i=0;i<array.length;i++){
+    if(i!=array.length-1){
+      add+=` ${i} : ${array[i]},`
+    }
+    else{
+      add+=` ${i} : ${array[i]}`
+    }
+    
+  }
+  let wrap = `{ ${add} }`
+  return wrap;
+}
 }
 
 // Uncomment the code below and test the output
